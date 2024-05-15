@@ -1,15 +1,4 @@
-<form action="#" method="post">
-    <label for="username">username</label>
-    <input type="text" name="username" />
-    <br />
-    <label for="password">password:</label>
-    <input type="text" name="password" />
-    <br />
-    <input type="submit" name="ZoekUser"/>
-</form>
-<form action="toevoegen.php">
-<button type="submit">Registreer</button>
-</form>
+
 
 <?php
 session_start();

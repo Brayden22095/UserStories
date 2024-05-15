@@ -12,14 +12,14 @@ class logins extends Database
     // Get all logins
     public function getAlllogins()
     {
-        $query = "SELECT * FROM userdatabase";
+        $query = "SELECT * FROM login";
         return parent::voerQueryUit($query);
     }
 
 
     public function checkLogin($username, $password)
     {
-        $query = "SELECT * FROM userdatabase WHERE username = '$username' AND password = '$password'";
+        $query = "SELECT * FROM login WHERE username = '$username' AND password = '$password'";
         return parent::voerQueryUit($query);
     }
 
@@ -38,7 +38,7 @@ class logins extends Database
         $password = $this->getpassword();
         $email = $this->getemail();
 
-        $query = "INSERT INTO userdatabase (username, password, email) VALUES ('$username', '$password', '$email')";
+        $query = "INSERT INTO login (username, password, email) VALUES ('$username', '$password', '$email')";
         
         // Return true if the query is successful, else return false
         if(parent::voerQueryUit($query) == false)
@@ -55,7 +55,7 @@ class logins extends Database
     // Delete a logins
     public function deletelogin($id)
     {
-        $query = "DELETE FROM userdatabase WHERE id = $id";
+        $query = "DELETE FROM login WHERE id = $id";
         return parent::voerQueryUit($query);
     }
 
