@@ -1,13 +1,13 @@
 <?php
 require_once('../../config/db_config.php');
 
-class Database
+class database
 {
     private $connectie;
 
     public function __construct()
     {
-        $this->connectie = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME, DB_USER, DB_PASS);
+        $this->connectie = new PDO("mysql:host=" . DB_HOST . ";dbname=" . DB_NAME . ";charset=utf8", DB_USER, DB_PASS);
     }
 
     public function voerQueryUit($query)
@@ -30,7 +30,7 @@ class Database
         $this->connectie = null;
     }
 
-    public function testVerbinding()
+    public function testVerbinding() 
     {
         return (bool) $this->connectie;
     }
@@ -40,6 +40,4 @@ class Database
         $this->sluitVerbinding();
     }
 }
-
-
 
