@@ -1,3 +1,4 @@
+<title>Klant toevoegen</title>
 <form action="#" method="post">
     <label for="naam">Naam:</label>
     <input type="text" name="naam" />
