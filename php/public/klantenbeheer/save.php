@@ -21,8 +21,9 @@ if(isset($_POST['savePerson'])){
     $newPerson->setEmail($_POST['email']);
     $newPerson->setTelefoonNummer($_POST['telefoonNummer']);
     
-    if($newPerson->savePerson() != false){
+    if($newPerson->saveCustomer() != false){
         echo "Persoon is opgeslagen";
+        header('Location: index.php');
     } else {
         echo "Persoon is niet opgeslagen";
     }

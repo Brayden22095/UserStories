@@ -1,5 +1,5 @@
 <?php
-include_once ('database.php');
+include_once('database.php');
 
 class klantenbeheer extends Database
 {
@@ -8,9 +8,8 @@ class klantenbeheer extends Database
     private $email;
     private $telefoonNummer;
 
-
-    // Save a new person
-    public function savePerson()
+    // Save a new customer
+    public function saveCustomer()
     {
         // Check if all required fields are filled in
         if (
@@ -21,20 +20,56 @@ class klantenbeheer extends Database
 
         $naam = $this->getNaam();
         $telefoonNummer = $this->getTelefoonNummer();
-        $email = $this->getEmail();        
+        $email = $this->getEmail();
 
         $query = "INSERT INTO userdatabase (Naam, Email, TelefoonNummer)
                 VALUES ('$naam', '$email', '$telefoonNummer')";
 
-
         // Return true if the query is successful, else return false
-        if (parent::voerQueryUit($query) == false) {
-            return false;
-        } else {
-            return true;
-        }
+        return parent::voerQueryUit($query) !== false;
     }
 
+    // Get all customers
+    public function getAllCustomers()
+    {
+        $query = "SELECT * FROM userdatabase";
+        return parent::voerQueryUit($query);
+    }
+
+    // Get a specific customer
+    public function getCustomer($id)
+    {
+        $query = "SELECT * FROM userdatabase WHERE id = $id";
+        return parent::voerQueryUit($query);
+    }
+
+    // Update a customer
+    public function updateCustomer($id)
+    {
+        // Check if all required fields are filled in
+        if (
+            $this->getNaam() == "" || $this->getTelefoonNummer() == "" || $this->getEmail() == ""
+        ) {
+            return false;
+        }
+
+        $naam = $this->getNaam();
+        $telefoonNummer = $this->getTelefoonNummer();
+        $email = $this->getEmail();
+
+        $query = "UPDATE userdatabase SET Naam = '$naam', Email = '$email', TelefoonNummer = '$telefoonNummer' WHERE id = $id";
+
+        // Return true if the query is successful, else return false
+        return parent::voerQueryUit($query) !== false;
+    }
+
+    // Delete a customer
+    public function deleteCustomer($id)
+    {
+        $query = "DELETE FROM userdatabase WHERE id = $id";
+        // Return true if the query is successful, else return false
+        return parent::voerQueryUit($query) !== false;
+    }
 
     // Getters and setters
     public function setId($id)
@@ -69,9 +104,4 @@ class klantenbeheer extends Database
     {
         return $this->telefoonNummer;
     }
-
-
-   
 }
-
-

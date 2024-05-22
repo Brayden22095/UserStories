@@ -1,5 +1,5 @@
 <?Php
-include_once ('database.php');
+include_once ('database_auth.php');
 
 class Authenicatie extends Database
 {
