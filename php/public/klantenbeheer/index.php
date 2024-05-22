@@ -34,10 +34,10 @@ $allCustomers = $customer->getAllCustomers();
             <table class="min-w-full bg-white shadow-md rounded">
                 <thead>
                     <tr>
-                        <th class="py-2 px-4 border-b">ID</th>
-                        <th class="py-2 px-4 border-b">Naam</th>
-                        <th class="py-2 px-4 border-b">Email</th>
-                        <th class="py-2 px-4 border-b">Telefoon</th>
+                        <th class="py-2 px-4 border-b text-left">ID</th>
+                        <th class="py-2 px-4 border-b text-left">Naam</th>
+                        <th class="py-2 px-4 border-b text-left">Email</th>
+                        <th class="py-2 px-4 border-b text-left">Telefoon</th>
                         <th class="py-2 px-4 border-b">Bekijken</th>
                         <th class="py-2 px-4 border-b">Bewerken</th>
                         <th class="py-2 px-4 border-b">Verwijderen</th>
@@ -52,9 +52,9 @@ $allCustomers = $customer->getAllCustomers();
                             echo "<td class='py-2 px-4 border-b'>" . $customer['Naam'] . "</td>";
                             echo "<td class='py-2 px-4 border-b'>" . $customer['Email'] . "</td>";
                             echo "<td class='py-2 px-4 border-b'>" . $customer['TelefoonNummer'] . "</td>";
-                            echo "<td class='py-2 px-4 border-b'><a href='detail.php?id=" . $customer['id'] . "' class='text-blue-500 hover:underline'>Bekijk</a></td>";
-                            echo "<td class='py-2 px-4 border-b'><a href='update.php?id=" . $customer['id'] . "' class='text-yellow-500 hover:underline'>Bewerken</a></td>";
-                            echo "<td class='py-2 px-4 border-b'><a href='delete.php?id=" . $customer['id'] . "' class='text-red-500 hover:underline'>Verwijderen</a></td>";  
+                            echo "<td class='py-2 px-4 border-b text-center'><a href='detail.php?id=" . $customer['id'] . "' class='text-blue-500 hover:underline'>Bekijk</a></td>";
+                            echo "<td class='py-2 px-4 border-b text-center'><a href='update.php?id=" . $customer['id'] . "' class='text-yellow-500 hover:underline'>Bewerken</a></td>";
+                            echo "<td class='py-2 px-4 border-b text-center'><a href='delete.php?id=" . $customer['id'] . "' class='text-red-500 hover:underline'>Verwijderen</a></td>";  
                             echo "</tr>";
                         }
                     }
