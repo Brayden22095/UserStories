@@ -29,9 +29,16 @@ $allCustomers = $customer->getAllCustomers();
             <a href="logout.php" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</a>
             <a href="save.php" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Klanten toevoegen</a>
             <form method="GET" action="search.php" class="flex">
-    <input type="text" name="search" placeholder="Zoek op naam" class="border px-4 py-2 rounded">
-    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Zoeken</button>
-</form>
+                <select name="criteria" class="border px-4 py-2 rounded">
+                    <option value="naam">Naam</option>
+                    <option value="email">Email</option>
+                    <option value="telefoonnummer">Telefoonnummer</option>
+                    <option value="id">ID</option>
+                </select>
+                <input type="text" name="search" placeholder="Zoekterm" class="border px-4 py-2 rounded">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Zoeken</button>
+            </form>
+
 
         </div>
         <h1 class="text-2xl font-semibold mb-4">Klanten</h1>

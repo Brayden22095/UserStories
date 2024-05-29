@@ -1,12 +1,30 @@
 <?php
-// Assuming you have a class named CustomerSearch that contains the searchCustomersByName method
 include("../../src/klantenbeheer.php");
 
-if (isset($_GET['search'])) {
+if (isset($_GET['search']) && isset($_GET['criteria'])) {
     $searchQuery = $_GET['search'];
-    
+    $searchCriteria = $_GET['criteria'];
+
     $klantenbeheer = new klantenbeheer();
-    $results = $klantenbeheer->searchCustomersByName($searchQuery);
+    
+    // Perform search based on the selected criteria
+    switch ($searchCriteria) {
+        case 'id':
+            $results = $klantenbeheer->searchCustomersById($searchQuery);
+            break;
+        case 'naam':
+            $results = $klantenbeheer->searchCustomersByName($searchQuery);
+            break;
+        case 'email':
+            $results = $klantenbeheer->searchCustomersByEmail($searchQuery);
+            break;
+        case 'telefoonnummer':
+            $results = $klantenbeheer->searchCustomersByTelefoonnummer($searchQuery);
+            break;
+        default:
+            $results = array(); // No search results if criteria is invalid
+            break;
+    }
 }
 ?>
 
@@ -25,10 +43,16 @@ if (isset($_GET['search'])) {
         <div class="mb-6 flex justify-between items-center">
             <form method="GET" class="flex-grow mr-4">
                 <div class="flex items-center">
+                    <select name="criteria" class="border p-2 rounded">
+                        <option value="naam" <?php echo ($_GET['criteria'] ?? '') === 'naam' ? 'selected' : ''; ?>>Naam</option>
+                        <option value="email" <?php echo ($_GET['criteria'] ?? '') === 'email' ? 'selected' : ''; ?>>Email</option>
+                        <option value="telefoonnummer" <?php echo ($_GET['criteria'] ?? '') === 'telefoonnummer' ? 'selected' : ''; ?>>Telefoonnummer</option>
+                        <option value="id" <?php echo ($_GET['criteria'] ?? '') === 'id' ? 'selected' : ''; ?>>ID</option>
+                    </select>
                     <input 
                         type="text" 
                         name="search" 
-                        placeholder="Zoek op naam" 
+                        placeholder="Zoekterm" 
                         class="w-full p-2 border border-gray-300 rounded-md shadow-sm"
                         value="<?php echo htmlspecialchars($searchQuery ?? '', ENT_QUOTES); ?>"
                     >

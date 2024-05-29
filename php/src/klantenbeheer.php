@@ -14,6 +14,22 @@ class klantenbeheer extends Database
 
         return parent::voerQueryUit($query);
     }
+    
+    public function searchCustomersById($id) {
+        $query = "SELECT * FROM userdatabase WHERE id = $id";
+        return parent::voerQueryUit($query);
+    }
+    
+    public function searchCustomersByEmail($email) {
+        $query = "SELECT * FROM userdatabase WHERE Email LIKE '%$email%'";
+        return parent::voerQueryUit($query);
+    }
+    
+    public function searchCustomersByTelefoonnummer($telefoonnummer) {
+        $query = "SELECT * FROM userdatabase WHERE TelefoonNummer LIKE '%$telefoonnummer%'";
+        return parent::voerQueryUit($query);
+    }
+    
 
     public function saveCustomer()
     {
