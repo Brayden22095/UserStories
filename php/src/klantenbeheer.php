@@ -8,7 +8,13 @@ class klantenbeheer extends Database
     private $email;
     private $telefoonNummer;
 
-    // Save a new customer
+    public function searchCustomersByName($name) {
+        $name = $this->getNaam2();
+        $query = "SELECT * FROM userdatabase WHERE Naam LIKE '%$name%'";
+
+        return parent::voerQueryUit($query);
+    }
+
     public function saveCustomer()
     {
         // Check if all required fields are filled in
@@ -87,6 +93,10 @@ class klantenbeheer extends Database
     public function getNaam()
     {
         return $this->naam;
+    }
+    public function getNaam2() {
+        // Assume this function returns sanitized input
+        return isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '';
     }
     public function setEmail($email)
     {
