@@ -28,7 +28,8 @@
                 </div>
                 <div class="mt-6">
                     <input type="submit" name="savePerson" value="Persoon toevoegen"
-                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer" />
+                        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 cursor-pointer mr-2" />
+                    <button type="button" onclick="window.location.href='index.php'" class="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 cursor-pointer">start pagina</button>
                 </div>
             </form>
             <?php
