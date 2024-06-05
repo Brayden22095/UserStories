@@ -34,25 +34,25 @@ class klantenbeheer extends Database
     }
     
 
-    public function saveCustomer()
-    {
-        // Check if all required fields are filled in
-        if (
-            $this->getNaam() == "" || $this->getTelefoonNummer() == "" || $this->getEmail() == ""
-        ) {
-            return false;
-        }
+    // public function saveCustomer()
+    // {
+    //     // Check if all required fields are filled in
+    //     if (
+    //         $this->getNaam() == "" || $this->getTelefoonNummer() == "" || $this->getEmail() == ""
+    //     ) {
+    //         return false;
+    //     }
 
-        $naam = $this->getNaam();
-        $telefoonNummer = $this->getTelefoonNummer();
-        $email = $this->getEmail();
+    //     $naam = $this->getNaam();
+    //     $telefoonNummer = $this->getTelefoonNummer();
+    //     $email = $this->getEmail();
 
-        $query = "INSERT INTO userdatabase (Naam, Email, TelefoonNummer)
-                VALUES ('$naam', '$email', '$telefoonNummer')";
+    //     $query = "INSERT INTO userdatabase (Naam, Email, TelefoonNummer)
+    //             VALUES ('$naam', '$email', '$telefoonNummer')";
 
-        // Return true if the query is successful, else return false
-        return parent::voerQueryUit($query) !== false;
-    }
+    //     // Return true if the query is successful, else return false
+    //     return parent::voerQueryUit($query) !== false;
+    // }
 
 
     // Get all customers
