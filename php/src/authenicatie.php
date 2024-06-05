@@ -26,8 +26,7 @@ class Authenicatie extends Database
         }
 
         // Check if the password is correct
-        $checkPasswordQuery = "SELECT password FROM users
-                WHERE password = '{$this->getPassword()}'";
+        $checkPasswordQuery = "SELECT password FROM users WHERE password = '{$this->getPassword()}'";
         $resultPassword = parent::voerQueryUit($checkPasswordQuery);
 
         if ($resultPassword > 0) {
