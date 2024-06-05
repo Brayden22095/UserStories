@@ -2,14 +2,14 @@
 include("../../src/klantenbeheer.php");
 
 if(isset($_GET['id'])){
-    $klant = new klantenbeheer();
+    $customer = new klantenbeheer();
+    $customerDelete = $customer->deleteCustomer($_GET['id']);
 
-    $klantDelete = $klant->deleteCustomer($_GET['id']);
-    
-    if($klantDelete != false){
+    if($customerDelete != false){
         echo "Klant is verwijderd";
         header("Location: index.php");
     } else {
         echo "Klant is niet verwijderd";
     }
 }
+
