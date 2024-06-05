@@ -28,6 +28,18 @@ $allCustomers = $customer->getAllCustomers();
         <div class="flex space-x-4 mb-4">
             <a href="logout.php" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</a>
             <a href="save.php" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Klanten toevoegen</a>
+            <form method="GET" action="search.php" class="flex">
+                <select name="criteria" class="border px-4 py-2 rounded">
+                    <option value="naam">Naam</option>
+                    <option value="email">Email</option>
+                    <option value="telefoonnummer">Telefoonnummer</option>
+                    <option value="id">ID</option>
+                </select>
+                <input type="text" name="search" placeholder="Zoekterm" class="border px-4 py-2 rounded">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Zoeken</button>
+            </form>
+
+
         </div>
         <h1 class="text-2xl font-semibold mb-4">Klanten</h1>
         <div class="overflow-x-auto">
@@ -53,7 +65,7 @@ $allCustomers = $customer->getAllCustomers();
                             echo "<td class='py-2 px-4 border-b'>" . $customer['Email'] . "</td>";
                             echo "<td class='py-2 px-4 border-b'>" . $customer['TelefoonNummer'] . "</td>";
                             echo "<td class='py-2 px-4 border-b text-center'><a href='detail.php?id=" . $customer['id'] . "' class='text-blue-500 hover:underline'>Bekijk</a></td>";
-                            echo "<td class='py-2 px-4 border-b text-center'><a href='update.php?id=" . $customer['id'] . "' class='text-yellow-500 hover:underline'>Bewerken</a></td>";
+                            echo "<td class='py-2 px-4 border-b text-center'><a href='bewerken.php?id=" . $customer['id'] . "' class='text-yellow-500 hover:underline'>Bewerken</a></td>";
                             echo "<td class='py-2 px-4 border-b text-center'><a href='delete.php?id=" . $customer['id'] . "' class='text-red-500 hover:underline'>Verwijderen</a></td>";  
                             echo "</tr>";
                         }

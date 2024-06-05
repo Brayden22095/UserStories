@@ -7,7 +7,53 @@ class klantenbeheer extends Database
     private $naam;
     private $email;
     private $telefoonNummer;
+
     private $tekst; // Add this line
+
+
+    public function searchCustomersByName($name) {
+        $name = $this->getNaam2();
+        $query = "SELECT * FROM userdatabase WHERE Naam LIKE '%$name%'";
+
+        return parent::voerQueryUit($query);
+    }
+    
+    public function searchCustomersById($id) {
+        $query = "SELECT * FROM userdatabase WHERE id = $id";
+        return parent::voerQueryUit($query);
+    }
+    
+    public function searchCustomersByEmail($email) {
+        $query = "SELECT * FROM userdatabase WHERE Email LIKE '%$email%'";
+        return parent::voerQueryUit($query);
+    }
+    
+    public function searchCustomersByTelefoonnummer($telefoonnummer) {
+        $query = "SELECT * FROM userdatabase WHERE TelefoonNummer LIKE '%$telefoonnummer%'";
+        return parent::voerQueryUit($query);
+    }
+    
+
+    public function saveCustomer()
+    {
+        // Check if all required fields are filled in
+        if (
+            $this->getNaam() == "" || $this->getTelefoonNummer() == "" || $this->getEmail() == ""
+        ) {
+            return false;
+        }
+
+        $naam = $this->getNaam();
+        $telefoonNummer = $this->getTelefoonNummer();
+        $email = $this->getEmail();
+
+        $query = "INSERT INTO userdatabase (Naam, Email, TelefoonNummer)
+                VALUES ('$naam', '$email', '$telefoonNummer')";
+
+        // Return true if the query is successful, else return false
+        return parent::voerQueryUit($query) !== false;
+    }
+
 
     // Get all customers
     public function getAllCustomers()
@@ -84,6 +130,13 @@ class klantenbeheer extends Database
     public function getNaam()
     {
         return $this->naam;
+    }
+
+
+
+    public function getNaam2() {
+        // Assume this function returns sanitized input
+        return isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '';
     }
 
     public function setEmail($email)
