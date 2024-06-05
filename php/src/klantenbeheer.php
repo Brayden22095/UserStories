@@ -8,6 +8,9 @@ class klantenbeheer extends Database
     private $email;
     private $telefoonNummer;
 
+    private $tekst; // Add this line
+
+
     public function searchCustomersByName($name) {
         $name = $this->getNaam2();
         $query = "SELECT * FROM userdatabase WHERE Naam LIKE '%$name%'";
@@ -51,6 +54,7 @@ class klantenbeheer extends Database
         return parent::voerQueryUit($query) !== false;
     }
 
+
     // Get all customers
     public function getAllCustomers()
     {
@@ -65,23 +69,38 @@ class klantenbeheer extends Database
         return parent::voerQueryUit($query);
     }
 
-    // Update a customer
-    public function updateCustomer($id)
+    // Save a new customer
+    public function saveCustomer()
     {
-        // Check if all required fields are filled in
-        if (
-            $this->getNaam() == "" || $this->getTelefoonNummer() == "" || $this->getEmail() == ""
-        ) {
+        if ($this->getNaam() == "" || $this->getTelefoonNummer() == "" || $this->getEmail() == "") {
             return false;
         }
 
         $naam = $this->getNaam();
         $telefoonNummer = $this->getTelefoonNummer();
         $email = $this->getEmail();
+        $tekst = $this->getTekst(); // Add this line
 
-        $query = "UPDATE userdatabase SET Naam = '$naam', Email = '$email', TelefoonNummer = '$telefoonNummer' WHERE id = $id";
+        $query = "INSERT INTO userdatabase (Naam, Email, TelefoonNummer, Tekst)
+                  VALUES ('$naam', '$email', '$telefoonNummer', '$tekst')"; // Update query
 
-        // Return true if the query is successful, else return false
+        return parent::voerQueryUit($query) !== false;
+    }
+
+    // Update a customer
+    public function updateCustomer($id)
+    {
+        if ($this->getNaam() == "" || $this->getTelefoonNummer() == "" || $this->getEmail() == "") {
+            return false;
+        }
+
+        $naam = $this->getNaam();
+        $telefoonNummer = $this->getTelefoonNummer();
+        $email = $this->getEmail();
+        $tekst = $this->getTekst(); // Add this line
+
+        $query = "UPDATE userdatabase SET Naam = '$naam', Email = '$email', TelefoonNummer = '$telefoonNummer', Tekst = '$tekst' WHERE id = $id"; // Update query
+
         return parent::voerQueryUit($query) !== false;
     }
 
@@ -89,7 +108,6 @@ class klantenbeheer extends Database
     public function deleteCustomer($id)
     {
         $query = "DELETE FROM userdatabase WHERE id = $id";
-        // Return true if the query is successful, else return false
         return parent::voerQueryUit($query) !== false;
     }
 
@@ -98,36 +116,58 @@ class klantenbeheer extends Database
     {
         $this->id = $id;
     }
+
     public function getId()
     {
         return $this->id;
     }
+
     public function setNaam($naam)
     {
         $this->naam = $naam;
     }
+
     public function getNaam()
     {
         return $this->naam;
     }
+
+
+
     public function getNaam2() {
         // Assume this function returns sanitized input
         return isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '';
     }
+
     public function setEmail($email)
     {
         $this->email = $email;
     }
+
     public function getEmail()
     {
         return $this->email;
     }
+
     public function setTelefoonNummer($telefoonNummer)
     {
         $this->telefoonNummer = $telefoonNummer;
     }
+
     public function getTelefoonNummer()
     {
         return $this->telefoonNummer;
     }
+
+    // Add these methods
+    public function setTekst($tekst)
+    {
+        $this->tekst = $tekst;
+    }
+
+    public function getTekst()
+    {
+        return $this->tekst;
+    }
 }
+?>
