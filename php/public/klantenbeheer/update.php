@@ -49,7 +49,7 @@ if(isset($_POST['updateKlant'])){
                 <input type="text" name="telefoonNummer" value="<?php echo isset($klantenData[0]['TelefoonNummer']) ? $klantenData[0]['TelefoonNummer'] : ''; ?>" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
             </div>
             <div class="mb-6">
-                <label for="tekst" class="block text-gray-700 text-sm font-bold mb-2">Tekst:</label>
+                <label for="tekst" class="block text-gray-700 text-sm font-bold mb-2">Beschrijving:</label>
                 <textarea name="tekst" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"><?php echo isset($klantenData[0]['Beschrijving']) ? $klantenData[0]['Beschrijving'] : ''; ?></textarea>
             </div>
             <div class="flex items-center justify-between">
