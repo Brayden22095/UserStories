@@ -7,9 +7,8 @@ class klantenbeheer extends Database
     private $naam;
     private $email;
     private $telefoonNummer;
-
-    private $tekst; // Add this line
-
+    private $tekst; 
+    private $status; // Add this line
 
     public function searchCustomersByName($name) {
         $name = $this->getNaam2();
@@ -57,10 +56,11 @@ class klantenbeheer extends Database
         $naam = $this->getNaam();
         $telefoonNummer = $this->getTelefoonNummer();
         $email = $this->getEmail();
-        $tekst = $this->getTekst(); // Add this line
+        $tekst = $this->getTekst();
+        $status = $this->getStatus(); // Add this line
 
-        $query = "INSERT INTO userdatabase (Naam, Email, TelefoonNummer, Tekst)
-                  VALUES ('$naam', '$email', '$telefoonNummer', '$tekst')"; // Update query
+        $query = "INSERT INTO userdatabase (Naam, Email, TelefoonNummer, Tekst, Status)
+                  VALUES ('$naam', '$email', '$telefoonNummer', '$tekst', '$status')"; // Update query
 
         return parent::voerQueryUit($query) !== false;
     }
@@ -75,9 +75,10 @@ class klantenbeheer extends Database
         $naam = $this->getNaam();
         $telefoonNummer = $this->getTelefoonNummer();
         $email = $this->getEmail();
-        $tekst = $this->getTekst(); // Add this line
+        $tekst = $this->getTekst();
+        $status = $this->getStatus(); // Add this line
 
-        $query = "UPDATE userdatabase SET Naam = '$naam', Email = '$email', TelefoonNummer = '$telefoonNummer', Tekst = '$tekst' WHERE id = $id"; // Update query
+        $query = "UPDATE userdatabase SET Naam = '$naam', Email = '$email', TelefoonNummer = '$telefoonNummer', Tekst = '$tekst', Status = '$status' WHERE id = $id"; // Update query
 
         return parent::voerQueryUit($query) !== false;
     }
@@ -110,8 +111,6 @@ class klantenbeheer extends Database
         return $this->naam;
     }
 
-
-
     public function getNaam2() {
         // Assume this function returns sanitized input
         return isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '';
@@ -137,7 +136,6 @@ class klantenbeheer extends Database
         return $this->telefoonNummer;
     }
 
-    // Add these methods
     public function setTekst($tekst)
     {
         $this->tekst = $tekst;
@@ -146,6 +144,17 @@ class klantenbeheer extends Database
     public function getTekst()
     {
         return $this->tekst;
+    }
+
+    // Add these methods
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
     }
 }
 ?>

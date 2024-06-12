@@ -5,22 +5,23 @@ include_once("../../src/klantenbeheer.php");
 ob_start();
 
 // Fetch customer data if customerID is set
-if(isset($_GET['id'])){
+if (isset($_GET['id'])) {
     $klant = new klantenbeheer();
-    $customerData = $klant->getCustomer($_GET['id']); // Corrected variable name
+    $customerData = $klant->getCustomer($_GET['id']);
 }
 
 // Update customer data if the form is submitted
-if(isset($_POST['updateKlant'])){
+if (isset($_POST['updateKlant'])) {
     $klant = new klantenbeheer();
     $klant->setNaam($_POST['naam']);
     $klant->setEmail($_POST['email']);
     $klant->setTelefoonNummer($_POST['telefoonNummer']);
     $klant->setTekst($_POST['tekst']);
-    
-    if($klant->updateCustomer($_GET['id']) != false){
+    $klant->setStatus($_POST['klus_afgerond']); // Add method to set the klus status
+
+    if ($klant->updateCustomer($_GET['id']) != false) {
         echo "Klant is bijgewerkt";
-        header("Location: detail.php?id=".$_GET['id']);
+        header("Location: detail.php?id=" . $_GET['id']);
         exit; // Make sure to exit after redirection
     } else {
         echo "Klant is niet bijgewerkt";
@@ -57,6 +58,15 @@ ob_end_flush();
             <div class="mb-6">
                 <label for="tekst" class="block text-gray-700 text-sm font-bold mb-2">Tekst:</label>
                 <textarea name="tekst" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"><?php echo isset($customerData[0]['Tekst']) ? htmlspecialchars($customerData[0]['Tekst']) : ''; ?></textarea>
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Klus afgerond (ja of nee):</label>
+                <div>
+                    <input type="radio" name="klus_afgerond" value="ja" id="klus_ja" <?php echo isset($customerData[0]['status']) && $customerData[0]['status'] == 'ja' ? 'checked' : ''; ?> class="mr-2">
+                    <label for="klus_ja">Ja</label>
+                    <input type="radio" name="klus_afgerond" value="nee" id="klus_nee" <?php echo isset($customerData[0]['status']) && $customerData[0]['status'] == 'nee' ? 'checked' : ''; ?> class="ml-4 mr-2">
+                    <label for="klus_nee">Nee</label>
+                </div>
             </div>
             <div class="flex items-center justify-between">
                 <input type="submit" name="updateKlant" value="Update Klant" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"/>
