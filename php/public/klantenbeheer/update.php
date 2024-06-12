@@ -16,7 +16,7 @@ if(isset($_POST['updateKlant'])){
     $klant->setNaam($_POST['naam']);
     $klant->setEmail($_POST['email']);
     $klant->setTelefoonNummer($_POST['telefoonNummer']);
-    $klant->setTekst($_POST['tekst']);
+    $klant->setBeschrijving($_POST['beschrijving']);
     
     if($klant->updateCustomer($_GET['id']) != false){
         echo "Klant is bijgewerkt";
@@ -57,6 +57,8 @@ ob_end_flush();
             <div class="mb-6">
                 <label for="tekst" class="block text-gray-700 text-sm font-bold mb-2">Tekst:</label>
                 <textarea name="tekst" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"><?php echo isset($customerData[0]['Tekst']) ? htmlspecialchars($customerData[0]['Tekst']) : ''; ?></textarea>
+                <label for="beschrijving" class="block text-gray-700 text-sm font-bold mb-2">Beschrijving:</label>
+                <textarea name="beschrijving" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"><?php echo isset($klantenData[0]['Beschrijving']) ? $klantenData[0]['Beschrijving'] : ''; ?></textarea>
             </div>
             <div class="flex items-center justify-between">
                 <input type="submit" name="updateKlant" value="Update Klant" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"/>

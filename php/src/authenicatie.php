@@ -30,6 +30,18 @@ class Authenicatie extends Database
             }
         }
         return false;
+        if ($resultName > 0) {
+            return true;
+        }
+
+        // Check if the password is correct
+        $checkPasswordQuery = "SELECT password FROM users WHERE password = '{$this->getPassword()}'";
+        $resultPassword = parent::voerQueryUit($checkPasswordQuery);
+
+        if ($resultPassword > 0) {
+            return true;
+        }
+
     }
 
     // Getters and setters

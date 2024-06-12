@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --h1: 50px;
+    --h2: 45px;
+    --h3: 38px;
+    --h4: 30px;
+    --h5: 20px;
+    --p: 18px;
+    --brandcolor: #d7c039;
+    --darkcolor1: #202124;
+    --darkcolor2: #35373b;
+    --lightcolor: #eeeeee;
+}
+
+body {
+    font-family: Montserrat;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #65aacf;
+    overflow: hidden;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        width: 450px;
+        height: 500px;
+        padding: 75px;
+        background: rgba(255, 255, 255, 0.21);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.49);
+
+        h1 {
+            height: 50px;
+            color: #fff;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: 200px;
+
+            .wachtwoord {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                width: 100%;
+                color: #fff;
+
+                .input {
+                    width: 100%;
+                }
+            }
+
+            .input {
+                width: 100%;
+                height: 50px;
+                padding: 20px;
+                border-radius: 25px;
+                background-color: transparent;
+                border-radius: 25px;
+                border: 1px solid rgba(255, 255, 255, 0.49);
+                color: #fff;
+            }
+
+            .input:focus {
+                outline: none;
+            }
+
+            .input::placeholder {
+                color: rgba(255, 255, 255, 0.49);
+            }
+
+            .submit-container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 50px;
+
+                .submit {
+                    width: 100%;
+                    height: 50px;
+                    background-color: #fff;
+                    color: #000;
+                    font-size: 18px;
+                    border: none;
+                    border-radius: 25px;
+                }
+
+                .submit:hover {
+                    cursor: pointer;
+                }
+
+                .submit:focus {
+                    outline: none;
+                }
+            }
+        }
+
+        .registreren {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            width: 100%;
+            color: #fff;
+
+            a {
+                color: #fff;
+                text-decoration: none;
+                font-weight: 600;
+            }
+        }
+    }
+
+    .image {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background-size: cover;
+        background-position: center;
+        background-image: url(assets/icon.svg);
+        background-repeat: no-repeat;
+        z-index: -1;
+    }
+}
