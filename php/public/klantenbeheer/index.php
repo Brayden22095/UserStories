@@ -25,21 +25,21 @@ $allCustomers = $customer->getAllCustomers();
     <div class="container mx-auto p-4">
         <h1 class="text-4xl font-bold mb-4">Dit is de website</h1>
         <p class="mb-4">Welkom op onze website: <span class="font-semibold"><?php echo $username; ?></span>!</p>
-        <div class="flex space-x-4 mb-4">
-            <a href="logout.php" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</a>
-            <a href="save.php" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Klanten toevoegen</a>
-            <form method="GET" action="search.php" class="flex">
-                <select name="criteria" class="border px-4 py-2 rounded">
+        <div class="flex justify-between items-center mb-4">
+            <div>
+                <a href="logout.php" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Logout</a>
+                <a href="save.php" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Klanten toevoegen</a>
+            </div>
+            <form method="GET" action="search.php" class="flex items-center space-x-2">
+                <select name="criteria" class="border border-gray-300 px-4 py-2 rounded focus:outline-none focus:border-blue-500">
                     <option value="naam">Naam</option>
                     <option value="email">Email</option>
                     <option value="telefoonnummer">Telefoonnummer</option>
                     <option value="id">ID</option>
                 </select>
-                <input type="text" name="search" placeholder="Zoekterm" class="border px-4 py-2 rounded">
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Zoeken</button>
+                <input type="text" name="search" placeholder="Zoekterm" class="border border-gray-300 px-4 py-2 rounded focus:outline-none focus:border-blue-500">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50">Zoeken</button>
             </form>
-
-
         </div>
         <h1 class="text-2xl font-semibold mb-4">Klanten</h1>
         <div class="overflow-x-auto">
@@ -54,6 +54,9 @@ $allCustomers = $customer->getAllCustomers();
                         <th class="py-2 px-4 border-b">Bewerken</th>
                         <th class="py-2 px-4 border-b">Verwijderen</th>
                         <th class="py-2 px-4 border-b">Factuur</th>
+                        <th class="py-2 px-4 border-b text-center">Bekijken</th>
+                        <th class="py-2 px-4 border-b text-center">Bewerken</th>
+                        <th class="py-2 px-4 border-b text-center">Verwijderen</th>
                     </tr>
                 </thead>
                 <tbody>

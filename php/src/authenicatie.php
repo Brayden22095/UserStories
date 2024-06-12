@@ -1,5 +1,5 @@
-<?Php
-include_once ('database_auth.php');
+<?php
+include_once('database_auth.php');
 
 class Authenicatie extends Database
 {
@@ -11,16 +11,25 @@ class Authenicatie extends Database
     // Login
     public function verifyUser($username, $password)
     {
-        // Check if all required fields are filled in
-        if ($this->getUsername() == "" || $this->getPassword() == "") {
+        // Check if username and password are provided
+        if ($username == "" || $password == "") {
             return false;
         }
 
-        // Check if the username already exists
-        $checkNameQuery = "SELECT username FROM users 
-                WHERE username = '{$this->getUsername()}'";
-        $resultName = parent::voerQueryUit($checkNameQuery);
+        // Prepare and execute the query to get the user by username
+        $checkNameQuery = "SELECT Wachtwoord FROM gebruiker WHERE Gebruikersnaam = ?";
+        $stmt = parent::voerQueryUit($checkNameQuery, [$username]);
 
+        if ($stmt->rowCount() > 0) {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $hashedPassword = $row['Wachtwoord'];
+
+            // Verify the provided password against the hashed password
+            if (password_verify($password, $hashedPassword)) {
+                return true;
+            }
+        }
+        return false;
         if ($resultName > 0) {
             return true;
         }
@@ -76,3 +85,4 @@ class Authenicatie extends Database
         return $this->email;
     }
 }
+?>
