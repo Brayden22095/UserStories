@@ -7,9 +7,11 @@ class klantenbeheer extends Database
     private $naam;
     private $email;
     private $telefoonNummer;
+
     private $beschrijving; // Add this line
     private $factuurDatum;
     private $totaalbedrag;
+
 
 
     public function searchCustomersByName($name) {
@@ -58,10 +60,12 @@ class klantenbeheer extends Database
         $naam = $this->getNaam();
         $telefoonNummer = $this->getTelefoonNummer();
         $email = $this->getEmail();
+
         $beschrijving = $this->getBeschrijving(); // Add this line
 
         $query = "INSERT INTO userdatabase (Naam, Email, TelefoonNummer, Beschrijving)
                   VALUES ('$naam', '$email', '$telefoonNummer', '$beschrijving')"; // Update query
+
 
         return parent::voerQueryUit($query) !== false;
     }
@@ -76,11 +80,13 @@ class klantenbeheer extends Database
         $naam = $this->getNaam();
         $telefoonNummer = $this->getTelefoonNummer();
         $email = $this->getEmail();
+
         $beschrijving = $this->getBeschrijving();
         $factuurDatum = $this->getFactuurDatum();
         $totaalbedrag = $this->getTotaalbedrag();
 
         $query = "UPDATE userdatabase SET Naam = '$naam', Email = '$email', TelefoonNummer = '$telefoonNummer', Beschrijving = '$beschrijving', FactuurDatum = '$factuurDatum', TotaalBedrag = '$totaalbedrag' WHERE id = $id"; // Update query
+
 
         return parent::voerQueryUit($query) !== false;
     }
@@ -113,8 +119,6 @@ class klantenbeheer extends Database
         return $this->naam;
     }
 
-
-
     public function getNaam2() {
         // Assume this function returns sanitized input
         return isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '';
@@ -140,8 +144,10 @@ class klantenbeheer extends Database
         return $this->telefoonNummer;
     }
 
+
     // Add these methods
     public function setBeschrijving($beschrijving)
+
     {
         $this->beschrijving = $beschrijving;
     }
@@ -169,6 +175,17 @@ class klantenbeheer extends Database
         $this->totaalbedrag = $totaalbedrag;
 
         return $this;
+    }
+
+    // Add these methods
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
     }
 }
 ?>

@@ -72,6 +72,7 @@ $allCustomers = $customer->getAllCustomers();
                             echo "<td class='py-2 px-4 border-b text-center'><a href='bewerken.php?id=" . $customer['id'] . "' class='text-yellow-500 hover:underline'>Bewerken</a></td>";
                             echo "<td class='py-2 px-4 border-b text-center'><a href='delete.php?id=" . $customer['id'] . "' class='text-red-500 hover:underline'>Verwijderen</a></td>";
                             echo "<td class='py-2 px-4 border-b text-center'><a href='factuur.php?id=" . $customer['id'] . "' class='text-green-500 hover:underline'>Factuur</a></td>";  
+
                             echo "</tr>";
                         }
                     }
