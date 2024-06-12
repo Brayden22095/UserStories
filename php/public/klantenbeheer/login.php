@@ -122,7 +122,7 @@ if (isset($_POST['login'])) {
             <input type="submit" value="Login" name="login">
         </form>
         <div class="additional-links">
-            <a href="register.php">Nog geen account? Registreer</a><br><br>
+            <a href="register.php">Nog geen account? Registreer.</a><br><br>
             <a href="forgot_password.php">Wachtwoord vergeten?</a>
             
         </div>
