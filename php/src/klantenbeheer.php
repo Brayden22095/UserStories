@@ -7,8 +7,12 @@ class klantenbeheer extends Database
     private $naam;
     private $email;
     private $telefoonNummer;
-    private $tekst; 
-    private $status; // Add this line
+
+    private $beschrijving; // Add this line
+    private $factuurDatum;
+    private $totaalbedrag;
+
+
 
     public function searchCustomersByName($name) {
         $name = $this->getNaam2();
@@ -56,11 +60,12 @@ class klantenbeheer extends Database
         $naam = $this->getNaam();
         $telefoonNummer = $this->getTelefoonNummer();
         $email = $this->getEmail();
-        $tekst = $this->getTekst();
-        $status = $this->getStatus(); // Add this line
 
-        $query = "INSERT INTO userdatabase (Naam, Email, TelefoonNummer, Tekst, Status)
-                  VALUES ('$naam', '$email', '$telefoonNummer', '$tekst', '$status')"; // Update query
+        $beschrijving = $this->getBeschrijving(); // Add this line
+
+        $query = "INSERT INTO userdatabase (Naam, Email, TelefoonNummer, Beschrijving)
+                  VALUES ('$naam', '$email', '$telefoonNummer', '$beschrijving')"; // Update query
+
 
         return parent::voerQueryUit($query) !== false;
     }
@@ -75,10 +80,13 @@ class klantenbeheer extends Database
         $naam = $this->getNaam();
         $telefoonNummer = $this->getTelefoonNummer();
         $email = $this->getEmail();
-        $tekst = $this->getTekst();
-        $status = $this->getStatus(); // Add this line
 
-        $query = "UPDATE userdatabase SET Naam = '$naam', Email = '$email', TelefoonNummer = '$telefoonNummer', Tekst = '$tekst', Status = '$status' WHERE id = $id"; // Update query
+        $beschrijving = $this->getBeschrijving();
+        $factuurDatum = $this->getFactuurDatum();
+        $totaalbedrag = $this->getTotaalbedrag();
+
+        $query = "UPDATE userdatabase SET Naam = '$naam', Email = '$email', TelefoonNummer = '$telefoonNummer', Beschrijving = '$beschrijving', FactuurDatum = '$factuurDatum', TotaalBedrag = '$totaalbedrag' WHERE id = $id"; // Update query
+
 
         return parent::voerQueryUit($query) !== false;
     }
@@ -136,14 +144,37 @@ class klantenbeheer extends Database
         return $this->telefoonNummer;
     }
 
-    public function setTekst($tekst)
+
+    // Add these methods
+    public function setBeschrijving($beschrijving)
+
     {
-        $this->tekst = $tekst;
+        $this->beschrijving = $beschrijving;
     }
 
-    public function getTekst()
+    public function getBeschrijving()
     {
-        return $this->tekst;
+        return $this->beschrijving;
+    }
+    public function getFactuurDatum()
+    {
+        return $this->factuurDatum;
+    }
+    public function setFactuurDatum($factuurDatum)
+    {
+        $this->factuurDatum = $factuurDatum;
+
+        return $this;
+    }
+    public function getTotaalbedrag()
+    {
+        return $this->totaalbedrag;
+    }
+    public function setTotaalbedrag($totaalbedrag)
+    {
+        $this->totaalbedrag = $totaalbedrag;
+
+        return $this;
     }
 
     // Add these methods
