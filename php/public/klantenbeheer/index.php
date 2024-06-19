@@ -81,5 +81,6 @@ $allCustomers = $customer->getAllCustomers();
             </table>
         </div>
     </div>
+    
 </body>
 </html>
