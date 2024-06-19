@@ -28,8 +28,7 @@ if (isset($_GET['id'])) {
             <p class="text-lg"><span class="font-semibold text-gray-700">Naam:</span> <?php echo $klantenData[0]['Naam']; ?></p>
             <p class="text-lg"><span class="font-semibold text-gray-700">Email:</span> <?php echo $klantenData[0]['Email']; ?></p>
             <p class="text-lg"><span class="font-semibold text-gray-700">Telefoon:</span> <?php echo $klantenData[0]['TelefoonNummer']; ?></p>
-            <p class="text-lg"><span class="font-semibold text-gray-700">Beschrijving:</span> <?php echo $klantenData[0]['Beschrijving']; ?></p>
-            <p class="text-lg"><span class="font-semibold text-gray-700">Totaal Bedrag:</span> <?php echo "€" . $klantenData[0]['TotaalBedrag']; ?></p>
+            <p class="text-lg"><span class="font-semibold text-gray-700">Beschrijving:</span> <?php echo $klantenData[0]['Tekst']; ?></p>
         </div>
         <div class="text-right border-t pt-4">
             <p class="text-lg font-semibold text-gray-700">Factuur Datum: <?php echo date("d-m-Y"); ?></p>

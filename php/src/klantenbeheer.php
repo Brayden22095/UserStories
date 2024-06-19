@@ -7,7 +7,8 @@ class klantenbeheer extends Database
     private $naam;
     private $email;
     private $telefoonNummer;
-
+    private $tekst;
+    private $status;
     private $beschrijving; // Add this line
     private $factuurDatum;
     private $totaalbedrag;
@@ -60,11 +61,11 @@ class klantenbeheer extends Database
         $naam = $this->getNaam();
         $telefoonNummer = $this->getTelefoonNummer();
         $email = $this->getEmail();
+        $status = $this->getStatus();
+        $tekst = $this->getTekst(); // Add this line
 
-        $beschrijving = $this->getBeschrijving(); // Add this line
-
-        $query = "INSERT INTO userdatabase (Naam, Email, TelefoonNummer, Beschrijving)
-                  VALUES ('$naam', '$email', '$telefoonNummer', '$beschrijving')"; // Update query
+        $query = "INSERT INTO userdatabase (Naam, Email, TelefoonNummer, Tekst, status)
+                  VALUES ('$naam', '$email', '$telefoonNummer', '$tekst', '$status')"; // Update query
 
 
         return parent::voerQueryUit($query) !== false;
@@ -85,7 +86,7 @@ class klantenbeheer extends Database
         $factuurDatum = $this->getFactuurDatum();
         $totaalbedrag = $this->getTotaalbedrag();
 
-        $query = "UPDATE userdatabase SET Naam = '$naam', Email = '$email', TelefoonNummer = '$telefoonNummer', Beschrijving = '$beschrijving', FactuurDatum = '$factuurDatum', TotaalBedrag = '$totaalbedrag' WHERE id = $id"; // Update query
+        $query = "UPDATE userdatabase SET Naam = '$naam', Email = '$email', TelefoonNummer = '$telefoonNummer', tekst = '$beschrijving' WHERE id = $id"; // Update query
 
 
         return parent::voerQueryUit($query) !== false;
@@ -186,6 +187,15 @@ class klantenbeheer extends Database
     public function getStatus()
     {
         return $this->status;
+    }
+
+    public function setTekst($tekst)
+    {
+        $this->tekst = $tekst;
+    }
+    public function getTekst()
+    {
+        return $this->tekst;
     }
 }
 ?>

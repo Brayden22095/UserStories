@@ -37,11 +37,6 @@ if (isset($_POST['login'])) {
             <input type="password" name="password" placeholder="Wachtwoord" required class="mb-4 p-3 w-full max-w-xs border border-gray-300 rounded-lg">
             <input type="submit" value="Login" name="login" class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 cursor-pointer w-full max-w-xs">
         </form>
-
-        <div class="additional-links">
-            <a href="register.php">Nog geen account? Registreer.</a><br><br>
-            <a href="forgot_password.php">Wachtwoord vergeten?</a>
-        </div>
     </div>
 
 </body>
