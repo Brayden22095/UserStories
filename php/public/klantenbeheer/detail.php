@@ -50,9 +50,7 @@ if (isset($_GET['id'])) {
                             </div>
                         </div>
                         <input type="hidden" name="klant_id" value="<?php echo htmlspecialchars($klantenData[0]['id']); ?>">
-                        <div class="mt-4">
-                            <input type="submit" value="Update Status" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        </div>
+                      
                     </form>
                 </div>
                 <div class="mt-6 flex space-x-4">
